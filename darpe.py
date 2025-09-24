@@ -41,6 +41,33 @@ with st.container():
   
 st.markdown("<hr style='border:2px solid #0a3d62'>", unsafe_allow_html=True)
 
+# Lê os dados
+dados = pd.read_csv("Participantes.csv")
+
+# Calcula o total
+total = dados['totalparticipantes'].sum()
+
+# Mostra o total antes do gráfico
+st.markdown(
+    f"""
+    <div style="text-align: center; margin: 20px 0;">
+        <div style="
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #0a3d62;
+            border: 2px solid #0a3d62;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        ">
+            Total de Participantes: <span style="color:#007bff;">{total}</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True
+)
+st.markdown("<hr style='border:2px solid #0a3d62'>", unsafe_allow_html=True)
 
 # Exemplo de DataFrames (substitua pelos seus arquivos)
 participantes = pd.read_csv("Participantes.csv")
@@ -97,4 +124,5 @@ fig3.update_traces(textinfo="label+value")
 # --- Exibir com molduras ---
 card("Distribuição por Participantes", fig1)
 card("Distribuição por Cargo / Ministério", fig2)
+
 card("Participantes por Cidade", fig3)
